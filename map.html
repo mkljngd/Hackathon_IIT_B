@@ -33,6 +33,11 @@
           center: { lng: 13.4, lat: 52.51 }
         });
        var ui = H.ui.UI.createDefault(map,defaultLayers);
+       
+       var bubble = new H.ui.InfoBubble({ lng: 13.4, lat: 52.51 }, {
+                content: '<b>Bhagwaan hu Bhosdike</b>'
+             });
+       ui.addBubble(bubble);
     </script>
   </body>
 </html>
