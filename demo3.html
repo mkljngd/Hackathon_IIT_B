@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable= yes ">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+    <title>Marker on the Map</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+  <script type="text/javascript" src='../js-examples-rendering-helpers/iframe-height.js'></script></head>
+  <body id="markers-on-the-map">
+    
+    <div class="page-header">
+        
+        
+    </div>
+   
+    <div id="map"></div>
+	
+	
+    	
+    <script>
+  
+
+
+/**
+ * Boilerplate map initialization code starts below:
+ */
+
+//Step 1: initialize communication with the platform
+// In your own code, replace variable window.apikey with your own apikey
+var platform = new H.service.Platform({
+  'apikey': 'jp64O9WSSAoTAifSza25d67oVJPHiR4EA76znN6qw8o'
+});
+var defaultLayers = platform.createDefaultLayers();
+
+//Step 2: initialize a map - this map is centered over Europe
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.vector.normal.map,{
+  center: {lat:19.0760, lng: 72.8777},
+  zoom: 4,
+  pixelRatio: window.devicePixelRatio || 1
+});
+// add a resize listener to make sure that the map occupies the whole container
+window.addEventListener('resize', () => map.getViewPort().resize());
+
+//Step 3: make the map interactive
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+// Create the default UI components
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+function addMarkersToMap(map) {
+   /* var parisMarker = new H.map.Marker({lat:48.8567, lng:2.3508});
+    map.addObject(parisMarker);
+
+    var romeMarker = new H.map.Marker({lat:41.9, lng: 12.5});
+    map.addObject(romeMarker);
+
+    var berlinMarker = new H.map.Marker({lat:52.5166, lng:13.3833});
+    map.addObject(berlinMarker);
+
+    var madridMarker = new H.map.Marker({lat:40.4, lng: -3.6833});
+    map.addObject(madridMarker);
+
+    var londonMarker = new H.map.Marker({lat:51.5008, lng:-0.1224});
+    map.addObject(londonMarker);
+*/	
+	var goregaon = new H.map.Marker({lat:19.1663 , lng:72.8526});
+	map.addObject(goregaon);
+	var Nalasopara = new H.map.Marker({lat:19.4199 , lng:72.8117});
+	map.addObject(Nalasopara);
+	var Andheri = new H.map.Marker({lat:19.1136 , lng:72.8697});
+	map.addObject(Andheri);
+	
+	var svgMarkup = '<svg width="24" height="24" ' +
+    'xmlns="http://www.w3.org/2000/svg">' +
+    '<rect stroke="white" fill="#1b468d" x="1" y="1" width="22" ' +
+    'height="22" /><text x="12" y="18" font-size="12pt" ' +
+    'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+    'fill="white">H</text></svg>';
+	var icon = new H.map.Icon(svgMarkup),
+    coords={lat:19.1663 , lng:72.8526},
+	Bandra = new H.map.Marker(coords,{icon:icon});
+	map.addObject(Bandra);
+	map.setCenter(coords);
+
+	var icon = new H.map.Icon('C:/Users/shailendra/Desktop/Hackathon/demo/ev.png');
+
+// Create a marker using the previously instantiated icon:
+var marker = new H.map.Marker({ lat: 52.5, lng: 13.4 }, { icon: icon });
+
+// Add the marker to the map:
+map.addObject(marker);
+	
+	var Dadar = new H.map.Marker({lat:19.0596 , lng:72.8295});
+	map.addObject(Dadar);
+	var Thane = new H.map.Marker({lat:19.2183 , lng:72.9781});
+	map.addObject(Thane);	
+}
+// Now use the map as required...
+window.onload = function () {
+  addMarkersToMap(map);
+}                  
+
+            
+	
+	</script>
+  </body>
+</html>
